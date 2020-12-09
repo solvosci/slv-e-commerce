@@ -64,7 +64,7 @@
         </xpath>
         
         <xpath expr="//header//a[@id='user_account']" position="inside">
-            <t t-esc="website.partner_id.name"/>
+            <span t-esc="user_id.name[:23] + '...' if user_id.name and len(user_id.name) &gt; 25 else user_id.name"/>
         </xpath>
         <xpath expr="//header//ul[@id='user_account_list']/li[hasclass('divider')]" position="attributes">
             <attribute name="t-if">website.user_id != user_id</attribute>
