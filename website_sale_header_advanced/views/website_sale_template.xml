@@ -13,7 +13,7 @@
         <xpath expr="//header//ul[@id='top_menu']" position="before">
             <div class="container_acount d-none d-md-block">
                 <div class="d-flex flex-row justify-content-start align-items-center pb-3">
-                    <div class="col-lg-3 pl-1">
+                    <div class="col-lg-3">
                     <a href="/" class="mr-1"><span class="fa fa-home fa-2x" style=""/></a>
                     <a href="www.facebook.com" class="mr-1" target="_blank"><span class="fa fa-facebook-square fa-2x" style="" data-original-title="" title="" aria-describedby="tooltip90844"/></a>
                     <a href="www.instagram.com" class="mr-1" target="_blank"><span class="fa fa-instagram fa-2x" style="" data-original-title="" title="" aria-describedby="tooltip580656"/></a>
@@ -78,5 +78,8 @@
         <xpath expr="//header//ul[@id='top_menu']/li[hasclass('dropdown')]" position="attributes">
             <attribute name="class" separator=" " add="d-none"/>
         </xpath>
+    </template>
+    <template id="products" inherit_id="website_sale.products" priority="100">
+        <xpath expr="//t[@t-call='website_sale.search']" position="replace"/>
     </template>
 </odoo>
