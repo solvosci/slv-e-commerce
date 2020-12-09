@@ -1,0 +1,130 @@
+/* Carousel products */
+.oe_product section {
+    position: inherit !important;
+}
+
+/* Top product Tags */ 
+.popular-tags #selectedattr label {
+    background: #D9230F !important;
+}
+
+/* Baner destacados cards */
+.card-banner-tag{
+    background-image: url("/web/image/8515/MarcoDefault.png");
+    background-size: cover;
+    height: 210px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.card-banner-tag > .card-banner-text{
+    width: 100%;
+    text-decoration: none;
+    color: white;
+}
+
+.card-banner{
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 auto;
+    flex: 1 1 auto;
+    background-color: #c9002c;
+    border: 2px solid black;
+}
+.card-banner-text{
+    padding: 0.5em;
+    padding-bottom: 1.4em;
+    padding-top: 1.4em;
+    color: white;
+}
+
+.card-banner-text-title{
+    font-size: 18px;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.card-banner-text-content{
+    font-size: 12px;
+}
+
+.card-banner-text a{
+    font-size: 12px;
+    color: white;
+    background-color: transparent;
+    border: 1px solid white;
+    padding: 0.4em;
+}
+
+.card-banner-text a:hover{
+    font-size: 14px;
+    color: #c9002c;
+    background-color: white;
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 0.4em;
+}
+
+@media (max-width: 768px){
+    .card-banner-tag{
+        background-image: url("/web/image/8517/MarcoMin320px.png");
+    }
+}
+
+@media (max-width: 990px){
+    .card-banner-tag{
+        background-image: url("/web/image/8519/MarcoMin768px.png");
+    }
+}
+
+
+/* Banners Fijos */
+.container_banner{
+    background-size: cover;
+    background-position: center;
+}
+
+.container_banner > a{
+    border: 2px solid black;
+    background-color: rgba(255, 255, 255,0.8);
+}
+
+.container_banner > a:hover{
+    background-color: rgba(175, 175, 175,0.8);
+    text-decoration: none;
+    color: black;
+}
+
+/* Listado de productos */
+#collapse1, #collapse2, #collapse3{
+    margin-left: 0 !important;
+} 
+
+#collapse1 label, #collapse2 label, #collapse3 label{
+    padding: 0.1em !important;
+}
+
+#collapse1 div, #collapse2 div, #collapse3 div{
+    display: none;
+}
+
+.tags li a:hover{
+    background: #ED5565 !important;
+    color: white !important;
+}
+
+.tags li a{
+    color: #D9230F !important;
+    border: 1px solid #D9230F !important;
+}
+
+/* Apartado de productos */
+.product_detail_img{
+    max-height: 400px !important;
+}
+
+#product_details h1{
+    font-size: 1.8em !important;
+}

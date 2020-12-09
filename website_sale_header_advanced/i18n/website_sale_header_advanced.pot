@@ -1,0 +1,48 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* website_sale_header_advanced
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-12-09 09:41+0000\n"
+"PO-Revision-Date: 2020-12-09 09:41+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: website_sale_header_advanced
+#: model_terms:ir.ui.view,arch_db:website_sale_header_advanced.Header Advanced
+msgid "<i class=\"fa fa-shopping-cart\"/>\n"
+"                                My Cart"
+msgstr ""
+
+#. module: website_sale_header_advanced
+#: model_terms:ir.ui.view,arch_db:website_sale_header_advanced.Header Advanced
+msgid "ES"
+msgstr ""
+
+#. module: website_sale_header_advanced
+#: model_terms:ir.ui.view,arch_db:website_sale_header_advanced.Header Advanced
+msgid "GA"
+msgstr ""
+
+#. module: website_sale_header_advanced
+#: model_terms:ir.ui.view,arch_db:website_sale_header_advanced.Header Advanced
+msgid "Log out"
+msgstr ""
+
+#. module: website_sale_header_advanced
+#: model_terms:ir.ui.view,arch_db:website_sale_header_advanced.Header Advanced
+msgid "My account"
+msgstr ""
+
+#. module: website_sale_header_advanced
+#: model_terms:ir.ui.view,arch_db:website_sale_header_advanced.Header Advanced
+msgid "Sign in"
+msgstr ""
+

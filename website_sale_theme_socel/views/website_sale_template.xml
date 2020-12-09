@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="Style Socel" inherit_id="website.layout">
+        <xpath expr="//t[@t-as='submenu']" position="after">
+            <link rel="stylesheet" href="/website_sale_theme_socel/static/src/css/website_sale_style.css"/>
+        </xpath>
+    </template>
+    
+</odoo>

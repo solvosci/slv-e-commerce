@@ -1,0 +1,54 @@
+/* Header */
+@media (min-width: 1500px){
+    .navbar .container{
+        max-width: 1500px !important;
+    }
+}
+
+.container > a.navbar-brand{
+    display: none;
+}
+
+.container_acount{
+    width: 62%;
+}
+
+#top_menu > li{
+    padding-right: 1.5em;
+    padding-left: 1.5em;
+    font-size: 16px;
+}
+
+#my_cart{
+    display: none;
+}
+
+#top_menu .divider{
+    display: none;
+}
+
+/* MediaQuerys Top Menu */
+@media (max-width: 990px){
+    .container_acount{
+        width: 100%;
+    }
+    .navbar .container{
+        max-width: 990px;
+    }
+    #top_menu > li {
+        padding-right: 0.5em;
+        padding-left: 0.5em;
+    }
+}
+
+@media (max-width: 1200px){
+    .container_acount{
+        width: 97%;
+    }
+}
+
+@media (max-width: 1500px){
+    .container_acount{
+         width: 83%;
+    }
+}
