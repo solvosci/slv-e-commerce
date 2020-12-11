@@ -5,6 +5,10 @@
     }
 }
 
+header{
+    border-bottom: 2px solid #D9230F;
+}
+
 .container > a.navbar-brand{
     display: none;
 }

@@ -28,8 +28,14 @@ To begin there are the social networks that have url by default, they can be mod
 In the languages ​​section you can configure:
 
 ```
-- Line 23 (Second Language)
-- Line 27 (First Language)
+- Line 26 (Second Language)
+- Line 30 (First Language)
+```
+
+For the section of the header message
+
+```
+- Line 23 (Message)
 ```
 
 For the company logo image, it is automatically collected from /web/binary/company_logo

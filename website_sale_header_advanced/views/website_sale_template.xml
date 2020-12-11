@@ -19,7 +19,10 @@
                     <a href="www.instagram.com" class="mr-1" target="_blank"><span class="fa fa-instagram fa-2x" style="" data-original-title="" title="" aria-describedby="tooltip580656"/></a>
                     <a href="www.linkedin.com" class="mr-1" target="_blank"><span class="fa fa-linkedin-square  fa-2x" style="" data-original-title="" title="" aria-describedby="tooltip339158"/></a>
                     </div>
-                    <div class="col-lg-9 d-flex flex-row justify-content-end align-items-center pb-2">
+                    <div class="col-lg-6 d-flex flex-row justify-content-center align-items-center pb-2">
+                        <font style="color: #D9230F;">Portes gratis por cada pedido mayor de 100€</font>
+                    </div>
+                    <div class="col-lg-3 d-flex flex-row justify-content-end align-items-center pb-2">
                         <a class="js_change_lang" href="/gl_ES/?fw=1" data-lang="gl_ES">
                             GA
                         </a>
