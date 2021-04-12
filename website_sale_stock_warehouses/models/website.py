@@ -14,7 +14,7 @@ class Website(models.Model):
 
     def get_stock_warehouses(self):
         self.ensure_one()
-        return self.warehouse_ids.ids or False
+        return self.sudo().warehouse_ids.ids or False
 
     def sale_get_order(self, force_create=False, code=None, update_pricelist=False, force_pricelist=False):
         ctx = self.env.context.copy()
