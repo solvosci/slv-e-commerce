@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="Header Advanced" inherit_id="website.layout">
+        <xpath expr="//t[@t-as='submenu']" position="after">
+            <link rel="stylesheet" href="/website_sale_theme_cedibox/static/src/css/website_sale_style.css"/>
+        </xpath>
+        <xpath expr="//header//div[@id='top_menu_collapse']" position="attributes">
+            <attribute name="class" separator=" " add="flex-column"/>
+        </xpath>
+        <xpath expr="//header//ul[@id='top_menu']" position="attributes">
+            <attribute name="class" separator=" " add="ml-0 justify-content-center w-100"/>
+        </xpath>
+        <xpath expr="//header//ul[@id='top_menu']" position="before">
+            <div class="container_acount d-none d-md-block">
+                <div class="d-flex d-flex justify-content-center align-items-center">
+                    <a href="/" class="col-lg-4">
+                        <img src="/web/binary/company_logo" class="img img-fluid" data-original-title="" title="" aria-describedby="tooltip582480"/>
+                    </a>
+                    <div class="col-lg-8">
+                        <div class="d-flex flex-row justify-content-start align-items-center mb-3">
+                            <div class="col-lg-4">
+                                <font id="social_tlpn" class="text-primary"></font>
+                            </div>
+                            <div class="col-lg-4 d-flex">
+                                <a href="" id="ic_facebook" class="mr-2" target="_blank">
+                                    <span class="fa fa-facebook-square fa-2x" data-original-title="" title="" aria-describedby="tooltip90844"/>
+                                </a>
+                                <a href="" id="ic_instagram" class="mr-2" target="_blank">
+                                    <span class="fa fa-instagram fa-2x" data-original-title="" title="" aria-describedby="tooltip580656"/>
+                                </a>
+                                <a href="" id="ic_linkedin" target="_blank">
+                                    <span class="fa fa-linkedin-square fa-2x" data-original-title="" title="" aria-describedby="tooltip339158"/>
+                                </a>
+                            </div>
+                            <div class="col-lg-4 d-flex justify-content-end">
+                                <ul id="user_account_list" class="list-unstyled mb-0">
+                                    <li class="nav-item divider" groups="base.group_public"/>
+                                    <li groups="base.group_public" class="nav-item">
+                                        <a t-attf-href="/web/login" class="nav-link font-weight-bold border-0">Sign in</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a href="#" class="nav-link dropdown-toggle" id="user_account" data-toggle="dropdown"></a>
+                                        <div class="dropdown-menu js_usermenu" role="menu">
+                                            <a href="/my/home" role="menuitem" class="dropdown-item">My account</a>
+                                            <a id="o_logout" class="dropdown-item" role="menuitem" href="/web/session/logout?redirect=/">Log out</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row justify-content-end align-items-center pb-3">
+                            <form t-att-action="'/shop'" method="get" id="product_search_main" class="pr-4">
+                                <t t-call="website.website_search_box"/>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+        
+        <xpath expr="//header//a[@id='user_account']" position="inside">
+            <span t-esc="user_id.name[:23] + '...' if user_id.name and len(user_id.name) &gt; 25 else user_id.name"/>
+        </xpath>
+        <xpath expr="//header//ul[@id='user_account_list']/li[hasclass('divider')]" position="attributes">
+            <attribute name="t-if">website.user_id != user_id</attribute>
+        </xpath>
+        <xpath expr="//header//ul[@id='user_account_list']/li[hasclass('dropdown')]" position="attributes">
+            <attribute name="t-if">website.user_id != user_id</attribute>
+        </xpath>
+        <xpath expr="//header//ul[@id='top_menu']/li[hasclass('divider')]" position="attributes">
+            <attribute name="class" separator=" " add="d-none"/>
+        </xpath>
+        <xpath expr="//header//ul[@id='top_menu']/li[hasclass('dropdown')]" position="attributes">
+            <attribute name="class" separator=" " add="d-none"/>
+        </xpath>
+        
+        <xpath expr="//header//a[@id='ic_facebook']" position="attributes">
+            <attribute name="href">website.social_fb</attribute>
+        </xpath>
+        <xpath expr="//header//a[@id='ic_instagram']" position="attributes">
+            <attribute name="href">website.social_ig</attribute>
+        </xpath>
+        <xpath expr="//header//a[@id='ic_linkedin']" position="attributes">
+            <attribute name="href">website.social_ld</attribute>
+        </xpath>
+        <xpath expr="//font[@id='social_tlpn']" position="inside">
+            <span t-esc="website.social_tlpn"/>
+        </xpath>
+
+    </template>
+</odoo>

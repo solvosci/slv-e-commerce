@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_website_config_settings_header_advanced" model="ir.ui.view">
+        <field name="name">Website header advanced setting</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="website.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='webmaster_settings']" position="after">
+                <h2>Configure header advanced:</h2>
+                <div class="row mt16 o_settings_container">
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <field name="social_fb_bool" class="col-md-2" />  
+                        </div>
+
+                        <div class="o_setting_right_pane">
+                            <div class="row">
+                                <label string="Facebook" for="social_fb" class="col-md-3 font-weight"/>
+                                <field name="social_fb" class="col-md-9" attrs="{'invisible': [('social_fb_bool', '=', False)]}"/>
+                            </div>
+                            <div class="text-muted">
+                                Add button for Facebook account
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <field name="social_ig_bool" class="col-md-2"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <div class="row">
+                                <label string="Instagram" for="social_fb" class="col-md-3 font-weight"/>
+                                <field name="social_ig" class="col-md-9" attrs="{'invisible': [('social_ig_bool', '=', False)]}"/>
+                            </div>
+                            <div class="text-muted">
+                                Add button for Instagram account
+                            </div>
+                        </div>  
+                    </div>  
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <field name="social_ld_bool" class="col-md-2"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <div class="row">
+                                <label string="Linkedin" for="social_tw" class="col-md-3 font-weight"/>
+                                <field name="social_ld" class="col-md-9" attrs="{'invisible': [('social_ld_bool', '=', False)]}"/>
+                            </div> 
+                            <div class="text-muted">
+                                Add button for Linkedin account
+                            </div>
+                        </div>  
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <field name="social_tlpn_bool" class="col-md-2"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <div class="row">
+                                <label string="Phone" for="social_tlpn" class="col-md-3 font-weight"/>
+                                <field name="social_tlpn" class="col-md-9" attrs="{'invisible': [('social_tlpn_bool', '=', False)]}"/>
+                            </div>
+                            <div class="text-muted">
+                                Add the phone number in the center of the header
+                            </div>
+                        </div>           
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
