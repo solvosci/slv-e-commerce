@@ -1,4 +1,4 @@
-# Copyright 2020 ...
+# Copyright 2021 Solvos Consultoría Informática (<http://www.solvos.es>)
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 {
     'name': 'Website Sale Theme Cedibox',
@@ -11,7 +11,6 @@
     'depends': ['website_sale'],
     'data': [
         'templates/templates.xml',
-        'views/website_settings_view.xml'
         ],
     'installable': True,
 }
