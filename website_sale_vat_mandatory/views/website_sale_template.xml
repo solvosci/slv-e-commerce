@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="address" name="Vat MAndatory" inherit_id="website_sale.address" priority="100">
+        <xpath expr="//input[@name='field_required']" position="attributes">
+            <attribute name="t-att-value">'phone,name,vat'</attribute>
+        </xpath>
+    </template>
+
+</odoo>
