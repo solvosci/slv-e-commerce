@@ -9,12 +9,13 @@
     """,
     "author": "Solvos",
     "license": "LGPL-3",
-    "version": "12.0.1.0.0",
+    "version": "17.0.1.0.0",
     "category": "Extra Tools",
     "website": "https://github.com/solvosci/slv-e-commerce",
     "depends": ["website_sale"],
     "data": [
-        'views/product_template_views.xml'
+        'views/product_template_views.xml',
+        'views/website_sale_product_template.xml',
     ],
     'installable': True,
 }
