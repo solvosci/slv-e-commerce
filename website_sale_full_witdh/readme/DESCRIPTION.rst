@@ -1,0 +1,1 @@
+Reduces margins and padding in the e-commerce shop and product pages.
