@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_frontend" inherit_id="web.assets_frontend" name="AR css">
+        <xpath expr="." position="inside">
+            <link rel='stylesheet' type="text/css" href="/website_sale_full_witdh/static/src/scss/custom_styles.scss"/>
+        </xpath>
+    </template>
+</odoo>
