@@ -1,0 +1,1 @@
+Cron to change size image in the website.

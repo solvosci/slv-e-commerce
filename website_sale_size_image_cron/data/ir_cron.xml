@@ -1,0 +1,14 @@
+<odoo>
+    <data noupdate="1">
+        <record id="ir_cron_size_images" model="ir.cron">
+            <field name="name">Changes size product images to enlarge</field>
+            <field name="active">False</field>
+            <field name="interval_type">hours</field>
+            <field name="interval_number">1</field>
+            <field name="numbercall">-1</field>
+            <field name="state">code</field>
+            <field name="model_id" ref="model_product_template"/>   
+            <field name="code">model.cron_trim_product_images()</field>           
+        </record>
+    </data>
+</odoo>
