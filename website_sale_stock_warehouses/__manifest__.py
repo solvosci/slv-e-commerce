@@ -7,7 +7,7 @@
     """,
     "author": "Solvos",
     "license": "LGPL-3",
-    "version": "13.0.1.0.1",
+    "version": "15.0.1.0.0",
     "category": "Website",
     "website": "https://github.com/solvosci/slv-e-commerce",
     "depends": [
