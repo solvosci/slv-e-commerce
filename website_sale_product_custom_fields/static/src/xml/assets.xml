@@ -1,0 +1,8 @@
+<odoo>
+    <template id="assets_frontend" inherit_id="website.assets_frontend" name="Custom Assets">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/website_sale_product_custom_fields/static/src/js/custom_script.js"/>
+            <link rel="stylesheet" href="/website_sale_product_custom_fields/static/src/css/custom_style.css"/>
+        </xpath>
+    </template>
+</odoo>

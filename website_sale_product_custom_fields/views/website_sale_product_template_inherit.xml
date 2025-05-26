@@ -1,0 +1,328 @@
+<odoo>
+    <template id="product_custom_fields" inherit_id="website_sale.product"
+        name="Product Page Custom Fields">
+        <xpath expr="//div[@id='add_to_cart_wrap']" position="before">
+            <t t-if="product.kid_gender">
+                <div class="form-group mt-3">
+                    <label for="reference_text">Reference</label>
+                    <input type="text" name="reference_text" id="reference_text"
+                        class="form-control" />
+                </div>
+                <div class="form-check mt-3">
+                    <input type="checkbox" name="is_tailored_check" id="is_tailored_check"
+                        class="form-check-input" />
+                    <label for="is_tailored_check" class="form-check-label">Is tailored?</label>
+                </div>
+                <div class="form-group mt-3" id="custom_note_group" style="display: none;">
+                    <div class="form-group row align-items-center">
+                        <label for="chest_circumference" class="col-sm-4 col-form-label">
+                            <t t-if="product.kid_gender == 'girl'">Chest Circumference</t>
+                            <t t-if="product.kid_gender == 'boy'">Hip</t>
+                        </label>
+                        <div class="col-sm-8">
+                            <select id="chest_circumference" name="chest_circumference" class="form-control">
+                                <option value="" disabled="true" selected="true">Select a value</option>
+
+                                <t t-if="product.kid_gender == 'girl'">
+                                    <t t-foreach="enumerate(range(59, 100, 2))" t-as="item">
+                                        <t t-set="i" t-value="item[1]" />
+                                        <t t-set="index" t-value="item[0]" />
+                                        <option t-att-value="'%s - %s - Talla %s' % (i, i+1, index + 5)">
+                                            <t t-esc="'%s - %s - Talla %s' % (i, i+1, index + 5)" />
+                                        </option>
+                                    </t>
+                                </t>
+
+                                <t t-if="product.kid_gender == 'boy'">
+                                    <t t-foreach="enumerate(range(59, 78, 2))" t-as="item">
+                                        <t t-set="i" t-value="item[1]" />
+                                        <t t-set="index" t-value="item[0]" />
+                                        <option t-att-value="'%s - %s - Talla %s' % (i, i+1, index + 5)">
+                                            <t t-esc="'%s - %s - Talla %s' % (i, i+1, index + 5)" />
+                                        </option>
+                                    </t>
+                                </t>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <label class="col-sm-4 col-form-label">Sleeve length</label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <input type="number" step="0.01" class="form-control"
+                                    name="sleeve_length" id="sleeve_length" />
+                                <div class="input-group-append">
+                                    <span class="input-group-text">cm</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <t t-if="product.kid_gender == 'girl'">
+                        <div class="form-group row align-items-center">
+                            <label class="col-sm-4 col-form-label">Arm circumference</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <input type="number" step="0.01" class="form-control"
+                                        name="arm_circumference" id="arm_circumference" />
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">cm</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row align-items-center">
+                            <label class="col-sm-4 col-form-label">Dress length</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <input type="number" step="0.01" class="form-control"
+                                        name="dress_length" id="dress_length" />
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">cm</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                    <t t-if="product.kid_gender == 'boy'">
+                        <div class="form-group row align-items-center">
+                            <label class="col-sm-4 col-form-label">Jacket length</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <input type="number" step="0.01" class="form-control"
+                                        name="jacket_length" id="jacket_length" />
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">cm</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row align-items-center">
+                            <label class="col-sm-4 col-form-label">Pant type</label>
+                            <div class="col-sm-8">
+                                <select name="pant_type" id="pant_type" class="form-control">
+                                    <option value="short">Short</option>
+                                    <option value="long">Long</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row align-items-center">
+                            <label class="col-sm-4 col-form-label">Waist circumference</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <input type="number" step="0.01" class="form-control"
+                                        name="waist_circumference" id="waist_circumference" />
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">cm</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row align-items-center">
+                            <label class="col-sm-4 col-form-label">Pant length</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <input type="number" step="0.01" class="form-control"
+                                        name="pant_length" id="pant_length" />
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">cm</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+                <div class="form-group mt-3">
+                    <label for="custom_select">Select a modification</label>
+                    <select name="custom_select" id="custom_select" class="form-control">
+                        <t t-foreach="request.env['sale.order.line.modification'].sudo().search([])"
+                            t-as="mod">
+                            <option t-att-value="mod.id">
+                                <t t-esc="mod.name" /> - <t t-esc="mod.price" />
+                                <t
+                                    t-esc="mod.currency_id.symbol" />
+                            </option>
+                        </t>
+                    </select>
+                </div>
+                <div class="form-group mt-3">
+                    <label for="note">Note</label>
+                    <input type="text" name="note" id="custom_note" class="form-control" />
+                </div>
+            </t>
+            <t t-if="product.kid_gender == 'girl'">
+                <div class="form-group mb-4">
+                    <label class="form-label fw-semibold mb-3">Complement</label>
+
+                    <div id="product-visual-selection"
+                        class="card shadow-sm bg-white py-4 px-3 mx-auto"
+                        style="cursor: pointer; max-width: 300px; transition: box-shadow 0.3s ease;">
+
+                        <span id="product-selected-badge" class="badge bg-primary mt-3 fs-6 d-none"></span>
+
+                        <img id="product-selected-image"
+                            src=""
+                            class="img-fluid mb-2"
+                            style="max-height: 140px; display: none; object-fit: contain; transition: opacity 0.3s ease;" />
+
+                        <div id="product-selected-placeholder" class="text-muted">
+                            <i class="bi bi-plus-circle me-1 fs-4"></i> Click To Select Complement</div>
+
+                        <div id="product-selected-price" class="text-muted mt-1 text-center"></div>
+                    </div>
+                    <button id="delete-selection-btn" type="button"
+                        class="btn btn-sm btn-outline-danger mt-2 d-block mx-auto">
+                        <i class="bi bi-x-circle me-1"></i>Remove Complement </button>
+
+                    <input type="hidden" id="product-selected-id" name="product-selected" />
+                </div>
+            </t>
+
+            <div id="custom-popup" class="popup-background d-none">
+                <div class="popup-content">
+
+                    <t t-set="categories" t-value="product.complement_category_ids" />
+
+                    <div class="popup-scroll-body">
+                        <t t-foreach="categories" t-as="category">
+                            <t t-set="products"
+                                t-value="request.env['product.template'].search([('categ_id', '=', category.id)])" />
+                            <t t-if="products">
+                                <h5 class="popup-category-title">
+                                    <t t-esc="category.name" />
+                                </h5>
+
+                                <div class="popup-product-container">
+                                    <t t-foreach="products" t-as="product_item">
+                                        <div
+                                            class="popup-product-card available-products shadow-sm"
+                                            t-att-data-product-id="product_item.id"
+                                            t-att-data-product-name="product_item.name"
+                                            t-att-data-product-image-url="'/web/image/product.template/%s/image_1920' % product_item.id"
+                                            t-att-data-product-price="product_item.product_variant_ids and product_item.product_variant_ids[0].lst_price or 0"
+                                            t-att-data-product-currency="product_item.currency_id.symbol">
+
+                                            <div class="popup-product-image">
+                                                <img
+                                                    t-attf-src="/web/image/product.template/#{product_item.id}/image_128"
+                                                    class="img-fluid" />
+                                            </div>
+
+                                            <div class="popup-product-info">
+                                                <h6 class="popup-product-name">
+                                                    <t t-esc="product_item.name" />
+                                                </h6>
+                                                <small class="fw-bold"> +<t
+                                                        t-esc="product_item.list_price" />
+                                                        <t
+                                                        t-esc="product.currency_id.symbol" />
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </div>
+                            </t>
+                        </t>
+                    </div>
+
+                    <div class="text-end mt-4 w-100" id="popup-buttons">
+                        <button type="button" class="btn btn-outline-secondary me-2"
+                            id="cancel-selection">Cancel</button>
+                        <button type="button" class="btn btn-primary" id="submit-selection"
+                            disabled="true">Confirm</button>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="cart_lines_custom_fields" inherit_id="website_sale.cart_lines"
+        name="Cart lines Custom Fields">
+        <xpath expr="//td[@class='td-product_name']" position="inside">
+
+            <div class="p-2 border rounded bg-light small" style="overflow-wrap: break-word;">
+
+                <div class="mb-2">
+                    <strong class="text-muted d-block">Reference:</strong>
+                    <div t-field="line.adv_reference" class="text-break" />
+                </div>
+
+                <div class="mb-2 d-flex align-items-center">
+                    <strong class="text-muted mb-0">Is tailored?</strong>
+                    <input type="checkbox"
+                        class="form-check-input"
+                        style="position: relative; margin-left: 20px; margin-bottom: 5px;"
+                        t-att-checked="line.adv_is_tailored and 'checked' or None"
+                        disabled="disabled" />
+                </div>
+
+                <t t-if="line.adv_is_tailored">
+                    <div class="mb-2">
+                        <strong class="text-muted d-block">Characteristics:</strong>
+                        <div t-field="line.adv_characteristics" class="text-break" />
+                    </div>
+                </t>
+
+                <div class="mb-2">
+                    <strong class="text-muted d-block">Modification:</strong>
+                    <div>
+                        <t t-if="line.adv_modification_id">
+                            <t t-esc="line.adv_modification_id.name" /> (+<t
+                                t-esc="line.adv_modification_id.price" /> <t
+                                t-esc="line.adv_modification_id.currency_id.symbol" />) </t>
+                    </div>
+                </div>
+                <t t-if="line.adv_complement_id">
+                    <t class="mb-2">
+                        <strong class="text-muted d-block">Complement:</strong>
+                        <div>
+                            <t t-if="line.adv_complement_id">
+                                <t t-esc="line.adv_complement_id.name" /> (+<t
+                                    t-esc="line.adv_complement_id.list_price" /> <t
+                                    t-esc="line.adv_modification_id.currency_id.symbol" />) </t>
+                        </div>
+                    </t>
+                </t>
+
+                <t t-if="line.adv_note">
+                    <div>
+                        <strong class="text-muted d-block">Note:</strong>
+                        <div t-field="line.adv_note" class="text-break" />
+                    </div>
+                </t>
+            </div>
+        </xpath>
+    </template>
+
+
+    <template id="cart_lines_quantity_read_only_keep_trash_v2" inherit_id="website_sale.cart_lines" name="Cantidad solo lectura, sin +/- pero con papelera (v2)">
+        <xpath expr="//div[contains(@class, 'css_quantity')]" position="replace">
+            <div class="css_quantity d-flex align-items-center justify-content-center">
+                <span class="form-control text-center bg-light border w-auto"
+                    t-esc="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty" />
+
+                <input type="hidden" class="js_quantity"
+                    t-att-data-line-id="line.id"
+                    t-att-data-product-id="line.product_id.id"
+                    t-att-value="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty"/>
+            </div>
+        </xpath>
+
+        </template>
+
+
+    <template id="cart_summary_custom_fields" inherit_id="website_sale.cart_summary"
+        name="Cart Summary Custom Fields">
+        <xpath expr="//td[@class='td-product_name']" position="inside">
+            <t t-if="line.adv_reference">
+                <div class="p-2 small" style="overflow-wrap: break-word;">
+
+                    <div class="mb-2">
+                        <strong class="text-muted d-block">Reference:</strong>
+                        <div t-field="line.adv_reference" class="text-break" />
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </template>
+</odoo>
