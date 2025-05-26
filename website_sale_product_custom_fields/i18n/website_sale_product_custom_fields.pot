@@ -1,0 +1,189 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* website_sale_product_custom_fields
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-16 07:55+0000\n"
+"PO-Revision-Date: 2025-07-16 07:55+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: website_sale_product_custom_fields
+#: model_terms:ir.ui.view,arch_db:website_sale_product_custom_fields.product_custom_fields
+msgid "<i class=\"bi bi-plus-circle me-1 fs-4\"/> Click To Select Complement"
+msgstr ""
+
+#. module: website_sale_product_custom_fields
+#: model_terms:ir.ui.view,arch_db:website_sale_product_custom_fields.product_custom_fields
+msgid "<i class=\"bi bi-x-circle me-1\"/>Remove Complement"
+msgstr ""
+
+#. module: website_sale_product_custom_fields
+#: model_terms:ir.ui.view,arch_db:website_sale_product_custom_fields.product_custom_fields
+msgid "<option value=\"\" disabled=\"true\" selected=\"true\">Select a value</option>"
+msgstr ""
+
+#. module: website_sale_product_custom_fields
+#: model_terms:ir.ui.view,arch_db:website_sale_product_custom_fields.product_custom_fields
+msgid ""
+"<select name=\"pant_type\" id=\"pant_type\" class=\"form-control\">\n"
+"                                    <option value=\"short\">Short</option>\n"
+"                                    <option value=\"long\">Long</option>\n"
+"                                </select>"
+msgstr ""
+
+#. module: website_sale_product_custom_fields
+#: model_terms:ir.ui.view,arch_db:website_sale_product_custom_fields.product_custom_fields
+msgid "<span class=\"input-group-text\">cm</span>"
+msgstr ""
+
+#. module: website_sale_product_custom_fields
+#: model_terms:ir.ui.view,arch_db:website_sale_product_custom_fields.cart_lines_custom_fields
+msgid "<strong class=\"text-muted d-block\">Characteristics:</strong>"
+msgstr ""
+
+#. module: website_sale_product_custom_fields
+#: model_terms:ir.ui.view,arch_db:website_sale_product_custom_fields.cart_lines_custom_fields
+msgid "<strong class=\"text-muted d-block\">Complement:</strong>"
+msgstr ""
+
+#. module: website_sale_product_custom_fields
+#: model_terms:ir.ui.view,arch_db:website_sale_product_custom_fields.cart_lines_custom_fields
+msgid "<strong class=\"text-muted d-block\">Modification:</strong>"
+msgstr ""
+
+#. module: website_sale_product_custom_fields
+#: model_terms:ir.ui.view,arch_db:website_sale_product_custom_fields.cart_lines_custom_fields
+msgid "<strong class=\"text-muted d-block\">Note:</strong>"
+msgstr ""
+
+#. module: website_sale_product_custom_fields
+#: model_terms:ir.ui.view,arch_db:website_sale_product_custom_fields.cart_lines_custom_fields
+#: model_terms:ir.ui.view,arch_db:website_sale_product_custom_fields.cart_summary_custom_fields
+msgid "<strong class=\"text-muted d-block\">Reference:</strong>"
+msgstr ""
+
+#. module: website_sale_product_custom_fields
+#: model_terms:ir.ui.view,arch_db:website_sale_product_custom_fields.cart_lines_custom_fields
+msgid "<strong class=\"text-muted mb-0\">Is tailored?</strong>"
+msgstr ""
+
+#. module: website_sale_product_custom_fields
+#: model_terms:ir.ui.view,arch_db:website_sale_product_custom_fields.product_custom_fields
+msgid "Arm circumference"
+msgstr ""
+
+#. module: website_sale_product_custom_fields
+#: model:ir.model.fields.selection,name:website_sale_product_custom_fields.selection__product_template__kid_gender__boy
+msgid "Boy"
+msgstr ""
+
+#. module: website_sale_product_custom_fields
+#: code:addons/website_sale_product_custom_fields/controllers/main.py:0
+#, python-format
+msgid "CP: %s // CB: %s // LV: %s // LM: %s"
+msgstr ""
+
+#. module: website_sale_product_custom_fields
+#: code:addons/website_sale_product_custom_fields/controllers/main.py:0
+#, python-format
+msgid "CP: %s // LC: %s // LM: %s // Pant.: %s // CC: %s // LP: %s"
+msgstr ""
+
+#. module: website_sale_product_custom_fields
+#: model_terms:ir.ui.view,arch_db:website_sale_product_custom_fields.product_custom_fields
+msgid "Cancel"
+msgstr ""
+
+#. module: website_sale_product_custom_fields
+#: model_terms:ir.ui.view,arch_db:website_sale_product_custom_fields.product_custom_fields
+msgid "Chest Circumference"
+msgstr ""
+
+#. module: website_sale_product_custom_fields
+#: model_terms:ir.ui.view,arch_db:website_sale_product_custom_fields.product_custom_fields
+msgid "Complement"
+msgstr ""
+
+#. module: website_sale_product_custom_fields
+#: model_terms:ir.ui.view,arch_db:website_sale_product_custom_fields.product_custom_fields
+msgid "Confirm"
+msgstr ""
+
+#. module: website_sale_product_custom_fields
+#: model_terms:ir.ui.view,arch_db:website_sale_product_custom_fields.product_custom_fields
+msgid "Dress length"
+msgstr ""
+
+#. module: website_sale_product_custom_fields
+#: model:ir.model.fields.selection,name:website_sale_product_custom_fields.selection__product_template__kid_gender__girl
+msgid "Girl"
+msgstr ""
+
+#. module: website_sale_product_custom_fields
+#: model_terms:ir.ui.view,arch_db:website_sale_product_custom_fields.product_custom_fields
+msgid "Hip"
+msgstr ""
+
+#. module: website_sale_product_custom_fields
+#: model_terms:ir.ui.view,arch_db:website_sale_product_custom_fields.product_custom_fields
+msgid "Is tailored?"
+msgstr ""
+
+#. module: website_sale_product_custom_fields
+#: model_terms:ir.ui.view,arch_db:website_sale_product_custom_fields.product_custom_fields
+msgid "Jacket length"
+msgstr ""
+
+#. module: website_sale_product_custom_fields
+#: model:ir.model.fields,field_description:website_sale_product_custom_fields.field_product_product__kid_gender
+#: model:ir.model.fields,field_description:website_sale_product_custom_fields.field_product_template__kid_gender
+msgid "Kid Gender"
+msgstr ""
+
+#. module: website_sale_product_custom_fields
+#: model_terms:ir.ui.view,arch_db:website_sale_product_custom_fields.product_custom_fields
+msgid "Note"
+msgstr ""
+
+#. module: website_sale_product_custom_fields
+#: model_terms:ir.ui.view,arch_db:website_sale_product_custom_fields.product_custom_fields
+msgid "Pant length"
+msgstr ""
+
+#. module: website_sale_product_custom_fields
+#: model_terms:ir.ui.view,arch_db:website_sale_product_custom_fields.product_custom_fields
+msgid "Pant type"
+msgstr ""
+
+#. module: website_sale_product_custom_fields
+#: model:ir.model,name:website_sale_product_custom_fields.model_product_template
+msgid "Product Template"
+msgstr ""
+
+#. module: website_sale_product_custom_fields
+#: model_terms:ir.ui.view,arch_db:website_sale_product_custom_fields.product_custom_fields
+msgid "Reference"
+msgstr ""
+
+#. module: website_sale_product_custom_fields
+#: model_terms:ir.ui.view,arch_db:website_sale_product_custom_fields.product_custom_fields
+msgid "Select a modification"
+msgstr ""
+
+#. module: website_sale_product_custom_fields
+#: model_terms:ir.ui.view,arch_db:website_sale_product_custom_fields.product_custom_fields
+msgid "Sleeve length"
+msgstr ""
+
+#. module: website_sale_product_custom_fields
+#: model_terms:ir.ui.view,arch_db:website_sale_product_custom_fields.product_custom_fields
+msgid "Waist circumference"
+msgstr ""
