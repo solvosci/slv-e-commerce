@@ -156,7 +156,7 @@
 
                     <div id="product-visual-selection"
                         class="card shadow-sm bg-white py-4 px-3 mx-auto"
-                        style="cursor: pointer; max-width: 300px; transition: box-shadow 0.3s ease;">
+                        t-att-data-product-id="product.id" style="cursor: pointer; max-width: 300px; transition: box-shadow 0.3s ease;">
 
                         <span id="product-selected-badge" class="badge bg-primary mt-3 fs-6 d-none"></span>
 
@@ -180,49 +180,11 @@
 
             <div id="custom-popup" class="popup-background d-none">
                 <div class="popup-content">
-
-                    <t t-set="categories" t-value="product.complement_category_ids" />
-
-                    <div class="popup-scroll-body">
-                        <t t-foreach="categories" t-as="category">
-                            <t t-set="products"
-                                t-value="request.env['product.template'].search([('categ_id', '=', category.id)])" />
-                            <t t-if="products">
-                                <h5 class="popup-category-title">
-                                    <t t-esc="category.name" />
-                                </h5>
-
-                                <div class="popup-product-container">
-                                    <t t-foreach="products" t-as="product_item">
-                                        <div
-                                            class="popup-product-card available-products shadow-sm"
-                                            t-att-data-product-id="product_item.id"
-                                            t-att-data-product-name="product_item.name"
-                                            t-att-data-product-image-url="'/web/image/product.template/%s/image_1920' % product_item.id"
-                                            t-att-data-product-price="product_item.product_variant_ids and product_item.product_variant_ids[0].lst_price or 0"
-                                            t-att-data-product-currency="product_item.currency_id.symbol">
-
-                                            <div class="popup-product-image">
-                                                <img
-                                                    t-attf-src="/web/image/product.template/#{product_item.id}/image_128"
-                                                    class="img-fluid" />
-                                            </div>
-
-                                            <div class="popup-product-info">
-                                                <h6 class="popup-product-name">
-                                                    <t t-esc="product_item.name" />
-                                                </h6>
-                                                <small class="fw-bold"> +<t
-                                                        t-esc="product_item.list_price" />
-                                                        <t
-                                                        t-esc="product.currency_id.symbol" />
-                                                </small>
-                                            </div>
-                                        </div>
-                                    </t>
-                                </div>
-                            </t>
-                        </t>
+                    <div class="popup-scroll-body" id="popup-content-placeholder">
+                        <div class="text-center p-5">
+                            <div class="spinner-border" role="status"></div>
+                            <p class="mt-2">Loading complements...</p>
+                        </div>
                     </div>
 
                     <div class="text-end mt-4 w-100" id="popup-buttons">
@@ -233,7 +195,7 @@
                     </div>
                 </div>
             </div>
-        </xpath>
+            </xpath>
     </template>
 
     <template id="cart_lines_custom_fields" inherit_id="website_sale.cart_lines"

@@ -6,14 +6,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-16 07:55+0000\n"
-"PO-Revision-Date: 2025-07-16 07:55+0000\n"
+"POT-Creation-Date: 2025-10-16 06:28+0000\n"
+"PO-Revision-Date: 2025-10-16 06:28+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+
+#. module: website_sale_product_custom_fields
+#. openerp-web
+#: code:addons/website_sale_product_custom_fields/static/src/js/custom_script.js:0
+#, python-format
+msgid ""
+"<div class=\"text-center p-5\"><div class=\"spinner-border\" "
+"role=\"status\"></div><p class=\"mt-2\">Loading complements...</p></div>"
+msgstr ""
+"<div class=\"text-center p-5\"><div class=\"spinner-border\" "
+"role=\"status\"></div><p class=\"mt-2\">Cargando complementos...</p></div>"
 
 #. module: website_sale_product_custom_fields
 #: model_terms:ir.ui.view,arch_db:website_sale_product_custom_fields.product_custom_fields
@@ -33,6 +44,20 @@ msgid "<option value=\"\" disabled=\"true\" selected=\"true\">Select a value</op
 msgstr ""
 "<option value=\"\" disabled=\"true\" selected=\"true\">Selecciona un "
 "valor</option>"
+
+#. module: website_sale_product_custom_fields
+#. openerp-web
+#: code:addons/website_sale_product_custom_fields/static/src/js/custom_script.js:0
+#, python-format
+msgid "<p class=\"text-danger p-3\">Error loading complements.</p>"
+msgstr "<p class=\"text-danger p-3\">Error cargando complementos.</p>"
+
+#. module: website_sale_product_custom_fields
+#. openerp-web
+#: code:addons/website_sale_product_custom_fields/static/src/js/custom_script.js:0
+#, python-format
+msgid "<p class=\"text-danger p-3\">Error: "
+msgstr "<p class=\"text-danger p-3\">Error: "
 
 #. module: website_sale_product_custom_fields
 #: model_terms:ir.ui.view,arch_db:website_sale_product_custom_fields.product_custom_fields
@@ -155,6 +180,11 @@ msgstr "Largo de casaca"
 #: model:ir.model.fields,field_description:website_sale_product_custom_fields.field_product_template__kid_gender
 msgid "Kid Gender"
 msgstr "Género del niño"
+
+#. module: website_sale_product_custom_fields
+#: model_terms:ir.ui.view,arch_db:website_sale_product_custom_fields.product_custom_fields
+msgid "Loading complements..."
+msgstr "Cargando complementos..."
 
 #. module: website_sale_product_custom_fields
 #: model_terms:ir.ui.view,arch_db:website_sale_product_custom_fields.product_custom_fields

@@ -2,6 +2,8 @@ odoo.define('website.user_custom_code', function (require) {
     'use strict';
 
     var publicWidget = require('web.public.widget');
+    var core = require('web.core');
+    var _t = core._t;
     require('website_sale.website_sale');
 
     publicWidget.registry.CustomActions = publicWidget.Widget.extend({
@@ -58,6 +60,7 @@ odoo.define('website.user_custom_code', function (require) {
         },
 
         _setupPopupSelector: function () {
+            const self = this;
             const productVisualSelection = document.getElementById('product-visual-selection');
             const productSelectedInputId = document.getElementById('product-selected-id');
             const productSelectedImage = document.getElementById('product-selected-image');
@@ -66,18 +69,61 @@ odoo.define('website.user_custom_code', function (require) {
             const deleteSelectionBtn = document.getElementById('delete-selection-btn');
 
             const productSelectedPrice = document.getElementById('product-selected-price');
-
-            const popupProductImage = document.getElementById('popup-product-image');
-            const popupProductName = document.getElementById('popup-product-name');
-            const popupProductPrice = document.getElementById('popup-product-price');
-
             const customPopup = document.getElementById('custom-popup');
-            const closePopupBtn = document.getElementById('close-popup');
             const cancelSelectionBtn = document.getElementById('cancel-selection');
             const submitSelectionBtn = document.getElementById('submit-selection');
 
-            const availableProducts = document.querySelectorAll('.available-products');
+            const popupContentPlaceholder = document.getElementById('popup-content-placeholder');
+            let hasLoaded = false;
             let tempProductSelection = null;
+
+            function _loadComplements() {
+                const productId = productVisualSelection.dataset.productId;
+
+                if (popupContentPlaceholder) {
+                    popupContentPlaceholder.innerHTML = _t('<div class="text-center p-5"><div class="spinner-border" role="status"></div><p class="mt-2">Loading complements...</p></div>');
+                }
+
+                self._rpc({
+                    route: "/website/complements/get_products",
+                    params: {
+                        product_id: productId,
+                    },
+                }).then(function (data) {
+                    if (data.error) {
+                        popupContentPlaceholder.innerHTML = _t('<p class="text-danger p-3">Error: ') + data.error + '</p>';
+                    } else {
+                        popupContentPlaceholder.innerHTML = data;
+                        hasLoaded = true;
+
+                        _rebindPopupEvents();
+                    }
+                }).catch(function (error) {
+                    popupContentPlaceholder.innerHTML = _t('<p class="text-danger p-3">Error loading complements.</p>');
+                });
+            }
+
+            function _rebindPopupEvents() {
+                const availableProducts = customPopup.querySelectorAll('.available-products');
+
+                availableProducts.forEach(elemento => {
+                    elemento.addEventListener('click', function () {
+                        availableProducts.forEach(el => el.classList.remove('border-primary', 'selected'));
+                        this.classList.add('border-primary', 'selected');
+
+                        const selectedData = {
+                            id: this.dataset.productId,
+                            name: this.dataset.productName,
+                            imageUrl: this.dataset.productImageUrl,
+                            price: this.dataset.productPrice,
+                            currency: this.dataset.productCurrency
+                        };
+
+                        if (submitSelectionBtn) submitSelectionBtn.disabled = false;
+                        tempProductSelection = selectedData;
+                    });
+                });
+            }
 
             function openPopup() {
                 if (customPopup) {
@@ -85,43 +131,20 @@ odoo.define('website.user_custom_code', function (require) {
                     customPopup.classList.add('d-flex');
                 }
 
-                availableProducts.forEach(el => el.classList.remove('border-primary', 'selected'));
-                tempProductSelection = null;
-                if (submitSelectionBtn) submitSelectionBtn.disabled = true;
+                if (!hasLoaded) {
+                    _loadComplements();
+                } else {
+                    const availableProducts = customPopup.querySelectorAll('.available-products');
+                    availableProducts.forEach(el => el.classList.remove('border-primary', 'selected'));
+                    if (submitSelectionBtn) submitSelectionBtn.disabled = true;
 
-                const productId = productSelectedInputId?.value;
-                if (productId) {
-                    availableProducts.forEach(el => {
-                        if (el.dataset.productId === productId) {
-                            el.classList.add('border-primary', 'selected');
-                            tempProductSelection = {
-                                id: el.dataset.productId,
-                                name: el.dataset.productName,
-                                imageUrl: el.dataset.productImageUrl,
-                                price: el.dataset.productPrice,
-                                currency: el.dataset.productCurrency
-                            };
-
-                            const price = parseFloat(tempProductSelection.price || 0).toFixed(2);
-                            const currency = tempProductSelection.currency || '€';
-
-                            if (popupProductImage && popupProductName && popupProductPrice) {
-                                popupProductImage.src = tempProductSelection.imageUrl;
-                                popupProductImage.style.display = 'block';
-                                popupProductName.textContent = tempProductSelection.name;
-                                popupProductPrice.textContent = `+ ${price} ${currency} `;
-                                popupProductPrice.style.display = 'block';
-                            }
+                    const productId = productSelectedInputId?.value;
+                    if (productId) {
+                        const currentSelection = customPopup.querySelector(`.available-products[data-product-id="${productId}"]`);
+                        if(currentSelection) {
+                            currentSelection.classList.add('border-primary', 'selected');
                             if (submitSelectionBtn) submitSelectionBtn.disabled = false;
                         }
-                    });
-                } else {
-                    if (popupProductImage && popupProductName && popupProductPrice) {
-                        popupProductImage.style.display = 'none';
-                        popupProductImage.src = '';
-                        popupProductName.textContent = '';
-                        popupProductPrice.style.display = 'none';
-                        popupProductPrice.textContent = '';
                     }
                 }
             }
@@ -158,7 +181,6 @@ odoo.define('website.user_custom_code', function (require) {
                 });
             }
 
-            if (closePopupBtn) closePopupBtn.addEventListener('click', closePopup);
             if (cancelSelectionBtn) cancelSelectionBtn.addEventListener('click', closePopup);
             if (customPopup) {
                 customPopup.addEventListener('click', function (event) {
@@ -166,39 +188,17 @@ odoo.define('website.user_custom_code', function (require) {
                 });
             }
 
-            if (availableProducts.length > 0) {
-                availableProducts.forEach(elemento => {
-                    elemento.addEventListener('click', function () {
-                        availableProducts.forEach(el => el.classList.remove('border-primary', 'selected'));
-                        this.classList.add('border-primary', 'selected');
-
-                        tempProductSelection = {
-                            id: this.dataset.productId,
-                            name: this.dataset.productName,
-                            imageUrl: this.dataset.productImageUrl,
-                            price: this.dataset.productPrice,
-                            currency: this.dataset.productCurrency
-                        };
-
-                        const price = parseFloat(tempProductSelection.price || 0).toFixed(2);
-                        const currency = tempProductSelection.currency || '€';
-
-                        if (popupProductImage && popupProductName && popupProductPrice) {
-                            popupProductImage.src = tempProductSelection.imageUrl;
-                            popupProductImage.style.display = 'block';
-                            popupProductName.textContent = tempProductSelection.name;
-                            popupProductPrice.textContent = `+ ${price} ${currency}`;
-                            popupProductPrice.style.display = 'block';
-                        }
-
-                        if (submitSelectionBtn) submitSelectionBtn.disabled = false;
-                    });
-                });
-            }
-
             if (submitSelectionBtn) {
                 submitSelectionBtn.addEventListener('click', function () {
-                    if (tempProductSelection) {
+                    const selectedElement = customPopup.querySelector('.available-products.selected');
+                    if (selectedElement) {
+                        tempProductSelection = {
+                            id: selectedElement.dataset.productId,
+                            name: selectedElement.dataset.productName,
+                            imageUrl: selectedElement.dataset.productImageUrl,
+                            price: selectedElement.dataset.productPrice,
+                            currency: selectedElement.dataset.productCurrency
+                        };
                         productSelectedInputId.value = tempProductSelection.id;
 
                         productSelectedImage.src = tempProductSelection.imageUrl;
