@@ -1,0 +1,43 @@
+<odoo>
+    <template id="complement_popup_content" name="Complement Popup Content (AJAX)">
+        
+        <t t-foreach="complement_data" t-as="category_data">
+            
+            <t t-if="category_data['products']">
+                <h5 class="popup-category-title">
+                    <t t-esc="category_data['category_name']" />
+                </h5>
+
+                <div class="popup-product-container">
+                    <t t-foreach="category_data['products']" t-as="product_item">
+                        <div
+                            class="popup-product-card available-products shadow-sm"
+                            t-att-data-product-id="product_item['id']"
+                            t-att-data-product-name="product_item['name']"
+                            t-att-data-product-image-url="'/web/image/product.template/%s/image_1920' % product_item['id']"
+                            t-att-data-product-price="product_item['variant_price']"
+                            t-att-data-product-currency="product_item['currency_symbol']">
+
+                            <div class="popup-product-image">
+                                <img
+                                    t-attf-src="/web/image/product.template/#{product_item['id']}/image_128"
+                                    class="img-fluid" />
+                            </div>
+
+                            <div class="popup-product-info">
+                                <h6 class="popup-product-name">
+                                    <t t-esc="product_item['name']" />
+                                </h6>
+                                <small class="fw-bold">
+                                    +
+                                    <t t-esc="product_item['variant_price']" />
+                                    <t t-esc="product_item['currency_symbol']" />
+                                </small>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

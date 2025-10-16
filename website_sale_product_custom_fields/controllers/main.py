@@ -37,6 +37,7 @@ class CustomWebsiteSale(WebsiteSale):
         self._create_cart_line(line, response, order, product_id, qty, **custom_values)
 
         for line in order.order_line:
+            self.complement_size(line)
             self._update_price(line)
 
         return response
@@ -64,12 +65,23 @@ class CustomWebsiteSale(WebsiteSale):
             base_price = line.adv_unitary_product_price or 0.0
 
             if line.adv_complement_id:
-                complement_price = request.env['product.template'].browse(int(line.adv_complement_id.id)).list_price or 0.0
+                complement_price = request.env['product.template'].sudo().browse(int(line.adv_complement_id.id)).list_price or 0.0
 
             if line.adv_modification_id:
                 modification_price = request.env['sale.order.line.modification'].sudo().browse(int(line.adv_modification_id.id)).price or 0.0
 
             line.price_unit = base_price + complement_price + modification_price
+
+    def complement_size(self, line):
+        product_values = line.product_id.product_template_attribute_value_ids.mapped("product_attribute_value_id")
+        if product_values:
+            equivalence = request.env["product.complement.size"].sudo().search([
+                ("product_size_ids", "in", product_values.ids),
+                ("active", "=", True)
+            ], limit=1)
+            line.adv_complement_size = equivalence.name
+            line.adv_complement_group = f"{line.adv_complement_id.name} | {equivalence.name}".strip()
+
 
     @staticmethod
     def _get_tailored_characteristics(**kw):
