@@ -20,7 +20,7 @@ class CustomWebsiteSale(WebsiteSale):
 
         reference = kw.get('reference')
         is_tailored = kw.get('is_tailored')
-        characteristics = self._get_tailored_characteristics(**kw) if is_tailored else False
+        characteristics = self._get_tailored_characteristics(**kw)
 
         custom_values = {
             'adv_reference': reference,
@@ -37,7 +37,7 @@ class CustomWebsiteSale(WebsiteSale):
         self._create_cart_line(line, response, order, product_id, qty, **custom_values)
 
         for line in order.order_line:
-            self.complement_size(line)
+            order.complement_size(line)
             self._update_price(line)
 
         return response
@@ -72,32 +72,30 @@ class CustomWebsiteSale(WebsiteSale):
 
             line.price_unit = base_price + complement_price + modification_price
 
-    def complement_size(self, line):
-        product_values = line.product_id.product_template_attribute_value_ids.mapped("product_attribute_value_id")
-        if product_values:
-            equivalence = request.env["product.complement.size"].sudo().search([
-                ("product_size_ids", "in", product_values.ids),
-                ("active", "=", True)
-            ], limit=1)
-            line.adv_complement_size = equivalence.name
-            line.adv_complement_group = f"{line.adv_complement_id.name} | {equivalence.name}".strip()
-
-
     @staticmethod
     def _get_tailored_characteristics(**kw):
         if kw.get('pant_type'):
-            return _("CP: %s // LC: %s // LM: %s // Pant.: %s // CC: %s // LP: %s") % (
-                kw.get('chest_circumference'),
-                kw.get('jacket_length'),
-                kw.get('sleeve_length'),
-                kw.get('pant_type'),
-                kw.get('waist_circumference'),
-                kw.get('pant_length')
+            return _("CP: {cp} // LC: {lc} // LM: {lm} // Pant.: {pant} // CC: {cc} // LP: {lp}").format(
+                cp=kw.get('chest_circumference') or '',
+                lc=kw.get('jacket_length') or '',
+                lm=kw.get('sleeve_length') or '',
+                pant=kw.get('pant_type') or '',
+                cc=kw.get('waist_circumference') or '',
+                lp=kw.get('pant_length') or ''
             )
         else:
-            return _("CP: %s // CB: %s // LV: %s // LM: %s") % (
+            if kw.get('is_tailored'):
+                return _("CP: %s // CB: %s // LV: %s // LM: %s") % (
                 kw.get('chest_circumference'),
                 kw.get('arm_circumference'),
                 kw.get('dress_length'),
                 kw.get('sleeve_length')
             )
+
+    @http.route(['/shop/checkout'], type='http', auth="public", website=True, sitemap=False)
+    def checkout(self, **post):
+        response = super().checkout(**post)
+        order = request.website.sale_get_order()
+        delivery_date = post.get('adv_requested_delivery_date')
+        order.adv_requested_delivery_date = delivery_date
+        return response
