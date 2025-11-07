@@ -7,7 +7,7 @@
     """,
     "author": "Solvos",
     "license": "LGPL-3",
-    "version": "15.0.2.0.0",
+    "version": "15.0.3.0.0",
     "category": "Website",
     "website": "https://github.com/solvosci/slv-e-commerce",
     "depends": [
@@ -24,7 +24,8 @@
         'security/ir_rule_data.xml',
         'views/complement_popup_template.xml',
         'views/product_template_views.xml',
-        'views/website_sale_product_template_inherit.xml'
+        'views/website_sale_product_template_inherit.xml',
+        "views/templates.xml"
     ],
     'installable': True,
 }
