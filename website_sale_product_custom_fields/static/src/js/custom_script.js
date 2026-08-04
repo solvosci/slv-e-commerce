@@ -15,7 +15,21 @@ odoo.define('website.user_custom_code', function (require) {
             this._setupPopupSelector();
             this._setupAddToCartValidation();
             this._injectDateIntoCheckout();
+            this._syncChestCircumferenceAttribute();
             return this._super.apply(this, arguments);
+        },
+
+        _syncChestCircumferenceAttribute: function () {
+            const chestSelect = document.getElementById("chest_circumference");
+            if (!chestSelect) return;
+
+            chestSelect.addEventListener('change', function () {
+                const valueName = chestSelect.selectedOptions[0]?.getAttribute("data-value_name");
+                if (!valueName) return;
+
+                $("li input[data-value_name='" + valueName + "']")
+                    .prop("checked", true);
+            });
         },
         _injectDateIntoCheckout: function () {
             const checkoutBtn = document.querySelectorAll('a[href*="/shop/checkout"]');

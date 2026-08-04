@@ -38,7 +38,7 @@
                                     <t t-foreach="enumerate(range(59, 100, 2))" t-as="item">
                                         <t t-set="i" t-value="item[1]" />
                                         <t t-set="index" t-value="item[0]" />
-                                        <option t-att-value="'%s - %s - Talla %s' % (i, i+1, index + 5)">
+                                        <option t-att-value="'%s - %s - Talla %s' % (i, i+1, index + 5)" t-att-data-value_name="'T%s' % (index + 5)">
                                             <t t-esc="'%s - %s - Talla %s' % (i, i+1, index + 5)" />
                                         </option>
                                     </t>
@@ -48,7 +48,7 @@
                                     <t t-foreach="enumerate(range(59, 78, 2))" t-as="item">
                                         <t t-set="i" t-value="item[1]" />
                                         <t t-set="index" t-value="item[0]" />
-                                        <option t-att-value="'%s - %s - Talla %s' % (i, i+1, index + 5)">
+                                        <option t-att-value="'%s - %s - Talla %s' % (i, i+1, index + 5)" t-att-data-value_name="'T%s' % (index + 5)">
                                             <t t-esc="'%s - %s - Talla %s' % (i, i+1, index + 5)" />
                                         </option>
                                     </t>
@@ -259,7 +259,7 @@
     </template>
 
 
-    <template id="cart_lines_quantity_read_only_keep_trash_v2" inherit_id="website_sale.cart_lines" name="Cantidad solo lectura, sin +/- pero con papelera (v2)">
+    <template id="cart_lines_quantity_read_only_keep_trash_v2" inherit_id="website_sale.cart_lines" priority="20" name="Cantidad solo lectura, sin +/- pero con papelera (v2)">
         <xpath expr="//div[contains(@class, 'css_quantity')]" position="replace">
             <div class="css_quantity d-flex align-items-center justify-content-center">
                 <span class="form-control text-center bg-light border w-auto"
