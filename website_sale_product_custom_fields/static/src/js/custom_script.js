@@ -28,7 +28,7 @@ odoo.define('website.user_custom_code', function (require) {
                 if (!valueName) return;
 
                 $("li input[data-value_name='" + valueName + "']")
-                    .prop("checked", true);
+                    .prop("checked", true).trigger("change");
             });
         },
         _injectDateIntoCheckout: function () {
